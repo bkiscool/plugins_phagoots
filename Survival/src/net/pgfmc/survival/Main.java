@@ -7,7 +7,6 @@ import net.md_5.bungee.api.ChatColor;
 import net.pgfmc.core.api.playerdata.PlayerData;
 import net.pgfmc.survival.balance.ItemProtect;
 import net.pgfmc.survival.cmd.Back;
-import net.pgfmc.survival.cmd.GetClaim;
 import net.pgfmc.survival.cmd.afk.Afk;
 import net.pgfmc.survival.cmd.afk.AfkEvents;
 import net.pgfmc.survival.cmd.donator.Craft;
@@ -56,7 +55,6 @@ public class Main extends JavaPlugin {
 		new Homes("homes");
 		
 		new Masterbook("commands");
-		new GetClaim("getClaim");
 		
 		new Pvp();
 		

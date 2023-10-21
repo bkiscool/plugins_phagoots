@@ -1,7 +1,5 @@
 package net.pgfmc.core.bot.minecraft.listeners;
 
-import java.time.OffsetDateTime;
-
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,12 +7,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.pgfmc.core.api.playerdata.PlayerData;
 import net.pgfmc.core.bot.discord.Discord;
-import net.pgfmc.core.bot.util.Colors;
 import net.pgfmc.core.bot.util.MessageHandler;
-import net.pgfmc.core.util.Profanity;
 
 public class OnAsyncPlayerChat implements Listener {
 	
@@ -32,23 +27,6 @@ public class OnAsyncPlayerChat implements Listener {
 		{
 			player.sendMessage(ChatColor.RED + "Your message is too long (max 95 characters).");
 			handler.setMessage(handler.getMessage().substring(0, 95) + "(...)");
-		}
-		
-		if (Profanity.hasProfanity(handler.getMessage()))
-		{
-			player.sendMessage(ChatColor.RED + "Please do not use blacklisted words!");
-			e.setCancelled(true);
-			
-			EmbedBuilder eb = Discord.simpleServerEmbed(player.getName(), "https://crafatar.com/avatars/" + player.getUniqueId(), Colors.RED);
-			eb.setTitle("Blacklisted word detected! (Minecraft)");
-			eb.setDescription("A blacklisted word was detected by " + player.getName() + " in Minecraft.");
-			eb.addField("User", player.getName(), false);
-			eb.addField("Message", "|| " + handler.getMessage() + " ||", false);
-			eb.setTimestamp(OffsetDateTime.now());
-			
-			Discord.sendAlert(eb.build()).queue();
-			
-			return;
 		}
 		
 		if (handler.getMessage().contains("@"))

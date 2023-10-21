@@ -7,7 +7,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 
 import net.pgfmc.core.api.playerdata.PlayerData;
-import net.pgfmc.core.util.Profanity;
 import net.pgfmc.core.util.commands.PlayerCommand;
 
 public class SetHome extends PlayerCommand {
@@ -42,25 +41,9 @@ public class SetHome extends PlayerCommand {
 		
 		name = name.toLowerCase().strip().replace(" ", "_");
 		
-		if (Profanity.hasProfanity(name))
-		{
-			pd.sendMessage(ChatColor.RED + "Please do not include profanity!");
-			return;
-		}
-		
 		if (homes.containsKey(name))
 		{
 			pd.sendMessage(ChatColor.RED + "You cannot have duplicate home names: " + ChatColor.GOLD + name);
-			return;
-		}
-		
-		if (pd.hasPermission("pgf.cmd.donator.home") && homes.size() >= 5)
-		{
-			pd.sendMessage(ChatColor.RED + "You can only have up to 5 homes: " + ChatColor.GOLD + Homes.getNamedHomes(pd));
-			return;
-		} else if (!pd.hasPermission("pgf.cmd.donator.home") && homes.size() >= 3)
-		{
-			pd.sendMessage(ChatColor.RED + "You can only have up to 3 homes: " + ChatColor.GOLD + Homes.getNamedHomes(pd));
 			return;
 		}
 		

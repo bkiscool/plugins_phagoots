@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 
 import net.pgfmc.core.CoreMain;
 import net.pgfmc.core.api.playerdata.PlayerData;
-import net.pgfmc.core.util.Profanity;
 
 public class Nick implements CommandExecutor {
 
@@ -60,12 +59,6 @@ public class Nick implements CommandExecutor {
 				.replace(ChatColor.COLOR_CHAR + "r", "");
 		
 		String nickWithoutColor = ChatColor.stripColor(nickWithColor);
-		
-		if (Profanity.hasProfanity(nickWithoutColor))
-		{
-			pd.sendMessage(ChatColor.RED + "Invalid nickname: Contains profanity!");
-			return;
-		}
 		
 		/*
 		 * A raw length of 0 means the nickname had no content, just color codes (lmao)

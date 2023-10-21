@@ -19,12 +19,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.event.server.ServerLoadEvent.LoadType;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.coreprotect.CoreProtect;
-import net.coreprotect.CoreProtectAPI;
 import net.luckperms.api.LuckPerms;
 import net.pgfmc.core.api.inventory.extra.InventoryPressEvent;
 import net.pgfmc.core.api.playerdata.PlayerData;
@@ -173,12 +170,6 @@ public class CoreMain extends JavaPlugin implements Listener {
 		
 		PlayerDataManager.initializePlayerData();
 		startRestartThread();
-		
-		// Purge CoreProtect data of 14 days or older
-		Plugin pluginCoreProtect = plugin.getServer().getPluginManager().getPlugin("CoreProtect");
-		CoreProtectAPI coreProtectAPI = ((CoreProtect) pluginCoreProtect).getAPI();
-		
-		if (coreProtectAPI != null) { coreProtectAPI.performPurge(1209600); } // 14 days in seconds
 		
 	}
 	

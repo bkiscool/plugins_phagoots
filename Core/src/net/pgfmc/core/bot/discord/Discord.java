@@ -86,7 +86,7 @@ public class Discord extends ListenerAdapter {
 	
 	public static Guild getGuildPGF()
 	{
-		return JDA.getGuildById("579055447437475851");
+		return JDA.getGuildById("993366832369127444");
 	}
 	
 	

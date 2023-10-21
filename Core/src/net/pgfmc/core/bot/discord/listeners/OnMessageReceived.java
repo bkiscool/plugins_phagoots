@@ -1,19 +1,15 @@
 package net.pgfmc.core.bot.discord.listeners;
 
-import java.time.OffsetDateTime;
 import java.util.stream.Collectors;
 
 import org.bukkit.ChatColor;
 
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.pgfmc.core.bot.discord.Discord;
-import net.pgfmc.core.bot.util.Colors;
 import net.pgfmc.core.bot.util.MessageHandler;
-import net.pgfmc.core.util.Profanity;
 import net.pgfmc.core.util.roles.PGFRole;
 import net.pgfmc.core.util.roles.Roles;
 
@@ -27,22 +23,6 @@ public class OnMessageReceived extends ListenerAdapter {
 		final MessageHandler handler = new MessageHandler(e.getMessage().getContentDisplay(), user);
 		
 		if (handler.getMessage().length() == 0) return;
-		
-		if (Profanity.hasProfanity(handler.getMessage()) && e.getGuild().equals(Discord.getGuildPGF()))
-		{
-			e.getChannel().sendMessage(user.getAsMention() + ", please do not use blacklisted words!");
-			e.getMessage().delete().queue();
-			
-			EmbedBuilder eb = Discord.simpleServerEmbed(user.getEffectiveName() + " (@" + user.getName() + ")", user.getAvatarUrl(), Colors.RED)
-									.setTitle("Blacklisted word detected! (Discord)")
-									.setDescription("A blacklisted word was detected by " + user.getName() + " in Discord.")
-									.addField("User", user.getName(), false)
-									.addField("Message", "|| " + handler.getMessage() + " ||", false)
-									.setTimestamp(OffsetDateTime.now());
-			
-			Discord.sendAlert(eb.build()).queue();
-			return;
-		}
 		
 		// return if message isn't in #server or a bot
 		if (!e.getChannel().getId().equals(Discord.getServerChannel().getId()) || user.isBot()) return;

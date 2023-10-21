@@ -1,5 +1,5 @@
 name: PGF-Survival
-version: 7.3.2
+version: 8.0.0
 api-version: 1.19
 authors: [bk, CrimsonDart]
 website: play.pgfmc.net
@@ -24,7 +24,7 @@ commands:
     usage: /<command>
     aliases: [bench]
     permission: pgf.cmd.donator.craft
-  pvp: 
+  pvp:
     description: Toggles PvP mode
     usage: /<command>
     permission: pgf.cmd.pvp
@@ -34,10 +34,6 @@ commands:
     description: Open up the help panel
     usage: /<command>
     permission: pgf.cmd.help
-  getClaim:
-    description: Get your free lodestone!
-    usage: /<command>
-    permission: pgf.cmd.lodestone
     
   back:
     description: Sends the player to the last known location

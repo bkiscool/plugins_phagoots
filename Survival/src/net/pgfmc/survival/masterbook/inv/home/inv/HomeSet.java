@@ -35,16 +35,6 @@ public class HomeSet extends ConfirmInventory {
 			return;
 		}
 		
-		if (p.hasPermission("pgf.cmd.donator.home") && homes.size() >= 5)
-		{
-			p.sendMessage(ChatColor.RED + "You can only have up to 5 homes: " + Homes.getNamedHomes(pd));
-			return;
-		} else if (!p.hasPermission("pgf.cmd.donator.home") && homes.size() >= 3)
-		{
-			p.sendMessage(ChatColor.RED + "You can only have up to 3 homes: " + Homes.getNamedHomes(pd));
-			return;
-		}
-		
 		pd.setData("tempHomeLocation", pd.getPlayer().getLocation()); // TODO O_O
 		p.closeInventory();
 		
