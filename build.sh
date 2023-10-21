@@ -13,9 +13,9 @@ echo ""
 sleep 1s
 echo "Exporting jars.."
 
-cd $PLUGINS_HOME/plugins
+cd E:/plugins_phagoots
 
-for name in Core Claims ModTools Survival; do
+for name in Core ModTools Survival; do
 	cd $name
 
 	if ! [ -z "$version_number" ]; then
@@ -27,8 +27,8 @@ for name in Core Claims ModTools Survival; do
 	wait
 done
 
-for name in Core Claims ModTools Survival; do
-	cp -f $name/target/$name-jar-with-dependencies.jar ../build/$name.jar
+for name in Core ModTools Survival; do
+	cp -f $name/target/$name-jar-with-dependencies.jar ./build/$name.jar
 	wait
 done
 
